@@ -1,0 +1,199 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+}
+
+a {
+  text-decoration: none;
+}
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --gradient-color: linear-gradient(
+    90deg,
+    hsl(48, 100%, 50%) 0%,
+    hsl(28, 100%, 54%, 100%)
+  );
+  --black-color: hsl(225, 15%, 6%);
+  --reflection-color: hsla(48, 30%, 95%, 0.3);
+  --body-color: hsl(48, 100%, 98%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Montserrat", sans-serif;
+  --normal-font-size: 1rem;
+}
+.container {
+  height: 100vh;
+  margin-inline: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .btn {
+    position: relative;
+    transition: transform 0.4s;
+    .btn-content {
+      position: relative;
+      background: var(--gradient-color);
+      padding: 1.2rem 3rem;
+      border-radius: 4rem;
+      border: 3px solid var(--black-color);
+      color: var(--black-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      column-gap: 0.5rem;
+      overflow: hidden;
+      .btn-text,
+      .btn-img {
+        position: relative;
+        z-index: 2;
+      }
+      .btn-text {
+        font-weight: 500;
+        font-size: 20px;
+      }
+      .btn-img {
+        width: 25px;
+        height: 25px;
+      }
+      .btn-reflection {
+        width: 8px;
+        height: 120px;
+        background-color: var(--reflection-color);
+        rotate: 30deg;
+        position: absolute;
+        inset: 0;
+        top: 0;
+        left: -180%;
+        margin: auto;
+        transition: left 0.6s cubic-bezier(0.2, 0.5, 0.2, 1.2);
+        &-1 {
+          &::after {
+            content: "";
+            width: 25px;
+            height: 100%;
+            background-color: var(--reflection-color);
+            position: absolute;
+            top: -1rem;
+            left: 1.2rem;
+          }
+        }
+        &-2 {
+          &::after {
+            content: "";
+            width: 40px;
+            height: 100%;
+            background-color: var(--reflection-color);
+            position: absolute;
+            top: -1rem;
+            left: 0.8rem;
+          }
+        }
+      }
+    }
+    .btn-graphics {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.5s, opacity 0.5s;
+      &-star-1 {
+        width: 20px;
+        top: -14px;
+        left: -16px;
+        transform: rotate(48deg) scale(0.1);
+      }
+      &-star-2 {
+        width: 40px;
+        top: -4px;
+        right: -10px;
+        transform: rotate(48deg) scale(0.1);
+      }
+      &-circle-1 {
+        width: 8px;
+        top: -8px;
+        left: 58px;
+        transform: scale(0.1);
+      }
+      &-circle-2 {
+        width: 8px;
+        right: 34px;
+        bottom: -8px;
+        transform: scale(0.1);
+      }
+      &-diamond-1 {
+        width: 18px;
+        top: -18px;
+        right: 62px;
+        transform: scale(0.1);
+      }
+      &-diamond-2 {
+        width: 30px;
+        left: 15px;
+        bottom: -16px;
+        transform: rotate(-48deg) scale(0.1);
+      }
+    }
+    .btn-shadow {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      // top:.5rem;
+      // left: -.5rem;
+      top: 0;
+      left: 0;
+      background: var(--gradient-color);
+      padding: 1.2rem 3rem;
+      border-radius: 4rem;
+      border: 3px solid var(--black-color);
+      z-index: -1;
+      transition: transform 0.3s;
+    }
+    &:hover {
+      transform: rotate(-4deg) scale(1.1);
+      .btn-shadow {
+        transform: translate(-0.5rem, 0.5rem);
+      }
+      .btn-reflection-1 {
+        left: 120%;
+      }
+      .btn-reflection-2 {
+        left: -70%;
+      }
+      .btn-graphics {
+        opacity: 1;
+        &-star-1 {
+          transform: scale(1.1);
+          transition-delay: 0.1s;
+        }
+        &-star-2 {
+          transform: scale(1.1);
+        }
+        &-circle-1 {
+          transform: translateY(-8px) scale(1.1);
+          transition-delay: 0.1s;
+        }
+        &-circle-2 {
+          transform: translate(-20px, 20px) scale(1.1);
+        }
+        &-diamond-1 {
+          transform: translate(7px) rotate(-24deg) scale(1.1);
+        }
+        &-diamond-2 {
+            transform: rotate(-12deg) scale(1.1);
+          }
+      }
+    }
+  }
+}
